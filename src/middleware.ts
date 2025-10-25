@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { verifySessionJwt, type SessionTokenPayload } from "./lib/auth";
+import { verifySessionJwt, type SessionTokenPayload } from "./lib/ethereum-auth";
 
 const PUBLIC_PATHS = new Set<string>([
   "/",
@@ -33,6 +33,9 @@ function isPublicPath(pathname: string): boolean {
 
   // Allow unauthenticated access to auth endpoints
   if (pathname.startsWith("/api/auth/")) return true;
+  
+  // Allow OAuth endpoints
+  if (pathname.startsWith("/api/oauth/")) return true;
 
   // Allow public API endpoints
   if (pathname === "/api/network-info") return true;

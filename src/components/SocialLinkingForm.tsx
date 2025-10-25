@@ -46,7 +46,12 @@ export default function SocialLinkingForm({ walletAddress }: Props) {
     }
   };
 
-  const linkSocial = async (platform: "twitter" | "instagram" | "linkedin", handle: string) => {
+  const linkTwitterOAuth = () => {
+    // Redirect to Twitter OAuth flow
+    window.location.href = "/api/oauth/twitter/authorize";
+  };
+
+  const linkSocial = async (platform: "instagram" | "linkedin", handle: string) => {
     if (!handle.trim()) {
       setError(`Please enter a ${platform} handle`);
       return;
@@ -100,32 +105,44 @@ export default function SocialLinkingForm({ walletAddress }: Props) {
         </div>
       )}
 
-      {/* Twitter */}
+      {/* Twitter - OAuth */}
       <div className="space-y-2">
         <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">
-          Twitter Handle
+          Twitter Account
         </label>
-        <div className="flex gap-2">
-          <input
-            type="text"
-            value={twitterHandle}
-            onChange={(e) => setTwitterHandle(e.target.value)}
-            placeholder="@username"
-            className="flex-1 rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:placeholder-zinc-500"
-          />
+        {socials?.twitter ? (
+          <div className="flex items-center justify-between rounded-lg border border-green-200 bg-green-50 px-4 py-3 dark:border-green-900 dark:bg-green-950">
+            <div className="flex items-center gap-2">
+              <span className="text-green-600 dark:text-green-400">✓</span>
+              <span className="text-sm font-medium text-green-900 dark:text-green-200">
+                @{socials.twitter}
+              </span>
+            </div>
+            <button
+              onClick={linkTwitterOAuth}
+              disabled={linking}
+              className="rounded-lg bg-violet-600 px-4 py-1.5 text-xs font-medium text-white hover:bg-violet-700 disabled:bg-zinc-400 dark:disabled:bg-zinc-700"
+            >
+              Update
+            </button>
+          </div>
+        ) : (
           <button
-            onClick={() => linkSocial("twitter", twitterHandle)}
+            onClick={linkTwitterOAuth}
             disabled={linking}
-            className="rounded-lg bg-violet-600 px-6 py-2 text-sm font-medium text-white hover:bg-violet-700 disabled:bg-zinc-400 dark:disabled:bg-zinc-700"
+            className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm font-medium text-zinc-900 hover:bg-zinc-50 disabled:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700 dark:disabled:bg-zinc-800"
           >
-            {socials?.twitter ? "Update" : "Link"}
+            <div className="flex items-center justify-center gap-2">
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              Connect Twitter Account
+            </div>
           </button>
-        </div>
-        {socials?.twitter && (
-          <p className="text-xs text-green-600 dark:text-green-400">
-            ✓ Linked: {socials.twitter}
-          </p>
         )}
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">
+          🔒 Verify ownership via Twitter OAuth
+        </p>
       </div>
 
       {/* Instagram */}

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { verifySessionJwt } from "@/lib/auth";
+import { verifySessionJwt } from "@/lib/ethereum-auth";
 
 export const dynamic = "force-dynamic";
 

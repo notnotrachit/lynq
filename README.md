@@ -4,7 +4,8 @@ Send PYUSD to social media handles instantly. Link your Ethereum wallet and pay 
 
 ## Features
 
-- 🔗 **Link Social Accounts** - Connect your Twitter, Instagram, or LinkedIn to your Ethereum wallet
+- 🔗 **Link Social Accounts** - Connect your Twitter (via OAuth), Instagram, or LinkedIn to your Ethereum wallet
+- 🔐 **OAuth Verification** - Twitter accounts verified through official OAuth 2.0 (not just usernames!)
 - 💸 **Send to Handles** - Send PYUSD directly to social media handles (even if they're not linked yet)
 - 🎁 **Claim Pending Funds** - Receive PYUSD sent to your social handles
 - 🦊 **MetaMask Integration** - Secure wallet authentication and transactions
@@ -40,13 +41,21 @@ cd lynq
 npm install
 ```
 
-3. Create `.env.local` file:
+3. Create `.env.local` file (copy from `env.example`):
 ```env
 AUTH_JWT_SECRET="your-long-random-secret"
 ADMIN_WALLET_PRIVATE_KEY="your-admin-wallet-private-key"
-NEXT_PUBLIC_SOCIAL_LINKING_CONTRACT="0xF587C909Ce3F9e63812db3744Eb32C12Ee95c29e"
+NEXT_PUBLIC_SOCIAL_LINKING_ADDRESS="0xF587C909Ce3F9e63812db3744Eb32C12Ee95c29e"
 NEXT_PUBLIC_PYUSD_ADDRESS="0xCaC524BcA292aaade2DF8A05cC58F0a65B1B3bB9"
+
+# Twitter OAuth (required for Twitter linking)
+TWITTER_CLIENT_ID="your-twitter-client-id"
+TWITTER_CLIENT_SECRET="your-twitter-client-secret"
+TWITTER_REDIRECT_URI="http://localhost:3000/api/oauth/twitter/callback"
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
 ```
+
+**📖 See [TWITTER_OAUTH_SETUP.md](./TWITTER_OAUTH_SETUP.md) for detailed Twitter OAuth setup instructions**
 
 4. Start the development server:
 ```bash
@@ -81,10 +90,19 @@ npm run hardhat:deploy:sepolia
 
 ## How It Works
 
-1. **Link Your Account**: Connect your wallet and link your social media handles
+1. **Link Your Account**: Connect your wallet and verify your Twitter account via OAuth
 2. **Send PYUSD**: Use the Chrome extension to send PYUSD to any Twitter handle
 3. **Pending Claims**: If the recipient hasn't linked their account, funds are held in the contract
-4. **Claim Funds**: Recipients link their account and claim their PYUSD
+4. **Claim Funds**: Recipients verify their Twitter account and claim their PYUSD
+
+### Twitter OAuth Flow
+
+```
+User → "Connect Twitter" → Twitter Login → Authorize App → 
+Verified Username → Blockchain Transaction → Linked! ✅
+```
+
+This ensures users actually own the Twitter accounts they're linking (not just claiming random handles).
 
 ## Architecture
 
