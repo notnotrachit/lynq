@@ -1,0 +1,455 @@
+/* Ethereum Pay Badge (next to name) */
+.lynq-ethereum-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 22px !important;
+  height: 22px !important;
+  padding: 0 !important;
+  background: linear-gradient(135deg, #9945FF 0%, #14F195 100%) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  margin-left: 4px !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  box-shadow: 0 2px 8px rgba(153, 69, 255, 0.4) !important;
+}
+
+.lynq-ethereum-badge:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 4px 12px rgba(153, 69, 255, 0.6) !important;
+}
+
+.lynq-ethereum-badge:active {
+  transform: scale(1.05) !important;
+}
+
+.lynq-ethereum-badge svg {
+  width: 14px !important;
+  height: 14px !important;
+  fill: white !important;
+  display: block !important;
+}
+
+/* Modal Overlay */
+.lynq-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(91, 112, 131, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+}
+
+/* Dark mode overlay */
+html[data-theme="dark"] .lynq-modal-overlay,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-modal-overlay,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-modal-overlay {
+  background: rgba(91, 112, 131, 0.4);
+}
+
+/* Modal */
+.lynq-modal {
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+  animation: slideUp 0.3s cubic-bezier(0, 0, 0.2, 1);
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Dark mode modal */
+html[data-theme="dark"] .lynq-modal,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-modal,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-modal {
+  background: rgb(21, 32, 43);
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 15px, rgba(255, 255, 255, 0.15) 0px 0px 3px 1px;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modal Header */
+.lynq-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgb(239, 243, 244);
+}
+
+html[data-theme="dark"] .lynq-modal-header,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-modal-header,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-modal-header {
+  border-bottom: 1px solid rgb(47, 51, 54);
+}
+
+.lynq-modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(15, 20, 25);
+  line-height: 24px;
+}
+
+html[data-theme="dark"] .lynq-modal-header h2,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-modal-header h2,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-modal-header h2 {
+  color: rgb(231, 233, 234);
+}
+
+.lynq-modal-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: rgb(15, 20, 25);
+  cursor: pointer;
+  padding: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+  min-width: 36px;
+  min-height: 36px;
+}
+
+.lynq-modal-close:hover {
+  background: rgba(15, 20, 25, 0.1);
+}
+
+html[data-theme="dark"] .lynq-modal-close,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-modal-close,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-modal-close {
+  color: rgb(231, 233, 234);
+}
+
+html[data-theme="dark"] .lynq-modal-close:hover,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-modal-close:hover,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-modal-close:hover {
+  background: rgba(231, 233, 234, 0.1);
+}
+
+/* Modal Body */
+.lynq-modal-body {
+  padding: 20px 16px;
+  background: rgb(255, 255, 255);
+  max-height: calc(90vh - 120px);
+  overflow-y: auto;
+}
+
+html[data-theme="dark"] .lynq-modal-body,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-modal-body,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-modal-body {
+  background: rgb(21, 32, 43);
+}
+
+.lynq-wallet-info {
+  background: rgb(247, 249, 249);
+  border: 1px solid rgb(207, 217, 222);
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+html[data-theme="dark"] .lynq-wallet-info,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-wallet-info,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-wallet-info {
+  background: rgb(32, 35, 39);
+  border: 1px solid rgb(47, 51, 54);
+}
+
+.lynq-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgb(83, 100, 113);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+html[data-theme="dark"] .lynq-label,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-label,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-label {
+  color: rgb(113, 118, 123);
+}
+
+.lynq-wallet-address {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 15px;
+  color: rgb(15, 20, 25);
+  font-weight: 400;
+  word-break: break-all;
+}
+
+html[data-theme="dark"] .lynq-wallet-address,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-wallet-address,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-wallet-address {
+  color: rgb(231, 233, 234);
+}
+
+.lynq-copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.lynq-copy-btn:hover {
+  background: rgba(15, 20, 25, 0.1);
+}
+
+html[data-theme="dark"] .lynq-copy-btn:hover,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-copy-btn:hover,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-copy-btn:hover {
+  background: rgba(231, 233, 234, 0.1);
+}
+
+.lynq-amount-input,
+.lynq-message-input {
+  margin-bottom: 20px;
+}
+
+.lynq-amount-input label,
+.lynq-message-input label {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: rgb(15, 20, 25);
+  margin-bottom: 12px;
+  line-height: 20px;
+}
+
+html[data-theme="dark"] .lynq-amount-input label,
+html[data-theme="dark"] .lynq-message-input label,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-amount-input label,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-message-input label,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-amount-input label,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-message-input label {
+  color: rgb(231, 233, 234);
+}
+
+.lynq-amount-input input,
+.lynq-message-input textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgb(207, 217, 222);
+  border-radius: 4px;
+  font-size: 17px;
+  color: rgb(15, 20, 25);
+  transition: all 0.2s;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: rgb(255, 255, 255);
+  box-sizing: border-box;
+}
+
+html[data-theme="dark"] .lynq-amount-input input,
+html[data-theme="dark"] .lynq-message-input textarea,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-amount-input input,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-message-input textarea,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-amount-input input,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-message-input textarea {
+  background: rgb(0, 0, 0);
+  border: 1px solid rgb(47, 51, 54);
+  color: rgb(231, 233, 234);
+}
+
+.lynq-amount-input input:hover,
+.lynq-message-input textarea:hover {
+  border-color: rgb(136, 153, 166);
+}
+
+html[data-theme="dark"] .lynq-amount-input input:hover,
+html[data-theme="dark"] .lynq-message-input textarea:hover,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-amount-input input:hover,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-message-input textarea:hover,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-amount-input input:hover,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-message-input textarea:hover {
+  border-color: rgb(113, 118, 123);
+}
+
+.lynq-amount-input input:focus,
+.lynq-message-input textarea:focus {
+  outline: none;
+  border-color: rgb(29, 155, 240);
+  box-shadow: rgb(29, 155, 240) 0px 0px 0px 1px;
+  background: rgb(255, 255, 255);
+}
+
+html[data-theme="dark"] .lynq-amount-input input:focus,
+html[data-theme="dark"] .lynq-message-input textarea:focus,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-amount-input input:focus,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-message-input textarea:focus,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-amount-input input:focus,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-message-input textarea:focus {
+  background: rgb(0, 0, 0);
+}
+
+.lynq-message-input textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 20px;
+}
+
+/* Status Messages */
+.lynq-status {
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 16px;
+  display: none;
+  animation: fadeIn 0.2s ease-out;
+  line-height: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.lynq-status:not(:empty) {
+  display: block;
+}
+
+.lynq-status-info {
+  background: rgb(229, 242, 255);
+  color: rgb(15, 20, 25);
+  border: 1px solid rgb(29, 155, 240);
+}
+
+.lynq-status-success {
+  background: rgb(0, 186, 124, 0.1);
+  color: rgb(0, 120, 80);
+  border: 1px solid rgb(0, 186, 124);
+}
+
+.lynq-status-error {
+  background: rgb(249, 24, 128, 0.1);
+  color: rgb(200, 0, 80);
+  border: 1px solid rgb(249, 24, 128);
+}
+
+.lynq-status a {
+  color: rgb(29, 155, 240);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.lynq-status a:hover {
+  text-decoration: underline;
+}
+
+/* Modal Footer */
+.lynq-modal-footer {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid rgb(239, 243, 244);
+}
+
+html[data-theme="dark"] .lynq-modal-footer,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-modal-footer,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-modal-footer {
+  border-top: 1px solid rgb(47, 51, 54);
+}
+
+.lynq-btn-secondary,
+.lynq-btn-primary {
+  flex: 1;
+  padding: 0;
+  min-height: 52px;
+  border-radius: 9999px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: 1px solid rgb(207, 217, 222);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.lynq-btn-secondary {
+  background: rgb(255, 255, 255);
+  color: rgb(15, 20, 25);
+}
+
+.lynq-btn-secondary:hover {
+  background: rgba(15, 20, 25, 0.1);
+}
+
+html[data-theme="dark"] .lynq-btn-secondary,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-btn-secondary,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-btn-secondary {
+  background: transparent;
+  color: rgb(231, 233, 234);
+  border: 1px solid rgb(47, 51, 54);
+}
+
+html[data-theme="dark"] .lynq-btn-secondary:hover,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-btn-secondary:hover,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-btn-secondary:hover {
+  background: rgba(231, 233, 234, 0.1);
+}
+
+.lynq-btn-primary {
+  background: rgb(15, 20, 25);
+  color: rgb(255, 255, 255);
+  border: none;
+}
+
+.lynq-btn-primary:hover:not(:disabled) {
+  background: rgb(39, 44, 48);
+}
+
+html[data-theme="dark"] .lynq-btn-primary,
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-btn-primary,
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-btn-primary {
+  background: rgb(239, 243, 244);
+  color: rgb(15, 20, 25);
+}
+
+html[data-theme="dark"] .lynq-btn-primary:hover:not(:disabled),
+body[style*="background-color: rgb(0, 0, 0)"] .lynq-btn-primary:hover:not(:disabled),
+body[style*="background-color: rgb(21, 32, 43)"] .lynq-btn-primary:hover:not(:disabled) {
+  background: rgb(215, 219, 220);
+}
+
+.lynq-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

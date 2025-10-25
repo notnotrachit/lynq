@@ -1,0 +1,51 @@
+{
+  "name": "lynq",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "hardhat:compile": "hardhat compile",
+    "hardhat:test": "hardhat test",
+    "hardhat:deploy:sepolia": "hardhat ignition deploy ignition/modules/SocialLinking.ts --network sepolia",
+    "hardhat:deploy:mainnet": "hardhat ignition deploy ignition/modules/SocialLinking.ts --network mainnet",
+    "hardhat:deploy:base": "hardhat ignition deploy ignition/modules/SocialLinking.ts --network base",
+    "hardhat:deploy:baseSepolia": "hardhat ignition deploy ignition/modules/SocialLinking.ts --network baseSepolia",
+    "hardhat:node": "hardhat node",
+    "hardhat:verify": "hardhat ignition verify",
+    "generate-icons": "node scripts/generate-icons.js"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.56.0",
+    "dotenv": "^17.2.3",
+    "ethers": "^6.13.0",
+    "jose": "^5.10.0",
+    "next": "16.0.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "wagmi": "^2.12.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ignition": "^3.0.3",
+    "@nomicfoundation/hardhat-network-helpers": "^3.0.1",
+    "@nomicfoundation/hardhat-toolbox": "^6.0.0",
+    "@nomicfoundation/hardhat-toolbox-viem": "^5.0.0",
+    "@nomicfoundation/hardhat-verify": "^3.0.0",
+    "@openzeppelin/contracts": "^5.0.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^22.18.12",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.0",
+    "forge-std": "github:foundry-rs/forge-std#v1.9.4",
+    "hardhat": "^3.0.9",
+    "tailwindcss": "^4",
+    "typescript": "^5.8.3",
+    "viem": "^2.30.0"
+  },
+  "type": "module"
+}
