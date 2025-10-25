@@ -172,24 +172,20 @@ export default function SocialLookup() {
                         )}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 opacity-50">
                       <span className="font-medium text-zinc-700 dark:text-zinc-300 w-24">
                         Instagram:
                       </span>
-                      <span className="text-zinc-900 dark:text-zinc-100">
-                        {walletResult.socials?.instagram || (
-                          <span className="text-zinc-400">Not linked</span>
-                        )}
+                      <span className="text-zinc-400">
+                        Coming soon
                       </span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 opacity-50">
                       <span className="font-medium text-zinc-700 dark:text-zinc-300 w-24">
                         LinkedIn:
                       </span>
-                      <span className="text-zinc-900 dark:text-zinc-100">
-                        {walletResult.socials?.linkedin || (
-                          <span className="text-zinc-400">Not linked</span>
-                        )}
+                      <span className="text-zinc-400">
+                        Coming soon
                       </span>
                     </div>
                   </div>
@@ -224,24 +220,16 @@ export default function SocialLookup() {
                 Twitter
               </button>
               <button
-                onClick={() => setPlatform("instagram")}
-                className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                  platform === "instagram"
-                    ? "bg-violet-600 text-white"
-                    : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
-                }`}
+                disabled
+                className="flex-1 rounded-lg px-4 py-2 text-sm font-medium bg-zinc-100 text-zinc-400 cursor-not-allowed dark:bg-zinc-800 dark:text-zinc-600"
               >
-                Instagram
+                Instagram 🚧
               </button>
               <button
-                onClick={() => setPlatform("linkedin")}
-                className={`flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                  platform === "linkedin"
-                    ? "bg-violet-600 text-white"
-                    : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
-                }`}
+                disabled
+                className="flex-1 rounded-lg px-4 py-2 text-sm font-medium bg-zinc-100 text-zinc-400 cursor-not-allowed dark:bg-zinc-800 dark:text-zinc-600"
               >
-                LinkedIn
+                LinkedIn 🚧
               </button>
             </div>
           </div>

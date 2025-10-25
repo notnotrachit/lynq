@@ -145,60 +145,28 @@ export default function SocialLinkingForm({ walletAddress }: Props) {
         </p>
       </div>
 
-      {/* Instagram */}
-      <div className="space-y-2">
+      {/* Instagram - Coming Soon */}
+      <div className="space-y-2 opacity-50">
         <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">
-          Instagram Handle
+          Instagram Account
         </label>
-        <div className="flex gap-2">
-          <input
-            type="text"
-            value={instagramHandle}
-            onChange={(e) => setInstagramHandle(e.target.value)}
-            placeholder="@username"
-            className="flex-1 rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:placeholder-zinc-500"
-          />
-          <button
-            onClick={() => linkSocial("instagram", instagramHandle)}
-            disabled={linking}
-            className="rounded-lg bg-violet-600 px-6 py-2 text-sm font-medium text-white hover:bg-violet-700 disabled:bg-zinc-400 dark:disabled:bg-zinc-700"
-          >
-            {socials?.instagram ? "Update" : "Link"}
-          </button>
-        </div>
-        {socials?.instagram && (
-          <p className="text-xs text-green-600 dark:text-green-400">
-            ✓ Linked: {socials.instagram}
+        <div className="rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900">
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            🚧 OAuth verification coming soon
           </p>
-        )}
+        </div>
       </div>
 
-      {/* LinkedIn */}
-      <div className="space-y-2">
+      {/* LinkedIn - Coming Soon */}
+      <div className="space-y-2 opacity-50">
         <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">
-          LinkedIn Handle
+          LinkedIn Account
         </label>
-        <div className="flex gap-2">
-          <input
-            type="text"
-            value={linkedinHandle}
-            onChange={(e) => setLinkedinHandle(e.target.value)}
-            placeholder="username"
-            className="flex-1 rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:placeholder-zinc-500"
-          />
-          <button
-            onClick={() => linkSocial("linkedin", linkedinHandle)}
-            disabled={linking}
-            className="rounded-lg bg-violet-600 px-6 py-2 text-sm font-medium text-white hover:bg-violet-700 disabled:bg-zinc-400 dark:disabled:bg-zinc-700"
-          >
-            {socials?.linkedin ? "Update" : "Link"}
-          </button>
-        </div>
-        {socials?.linkedin && (
-          <p className="text-xs text-green-600 dark:text-green-400">
-            ✓ Linked: {socials.linkedin}
+        <div className="rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900">
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            🚧 OAuth verification coming soon
           </p>
-        )}
+        </div>
       </div>
 
       <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-200">
