@@ -125,11 +125,18 @@ async function processCurrentPage() {
 function extractTwitterHandle() {
   console.log('🔎 Extracting Twitter handle...');
 
-  // Try multiple selectors for Twitter/X
+  // PRIORITY 1: Extract from URL (most reliable)
+  const match = window.location.pathname.match(/^\/([^\/]+)/);
+  if (match && match[1] !== 'home' && match[1] !== 'explore' && match[1] !== 'notifications' && match[1] !== 'messages' && match[1] !== 'settings') {
+    const handle = '@' + match[1];
+    console.log('  ✅ Extracted from URL:', handle);
+    return handle;
+  }
+
+  // PRIORITY 2: Try specific profile selectors only if URL fails
   const selectors = [
     '[data-testid="UserName"]',
-    '[data-testid="UserProfileHeader_Items"]',
-    'div[dir="ltr"] span'
+    '[data-testid="UserProfileHeader_Items"]'
   ];
 
   for (const selector of selectors) {
@@ -143,14 +150,6 @@ function extractTwitterHandle() {
         return text.trim();
       }
     }
-  }
-
-  // Fallback: extract from URL
-  const match = window.location.pathname.match(/^\/([^\/]+)/);
-  if (match && match[1] !== 'home' && match[1] !== 'explore' && match[1] !== 'notifications') {
-    const handle = '@' + match[1];
-    console.log('  ✅ Extracted from URL:', handle);
-    return handle;
   }
 
   console.log('  ❌ Could not extract handle');
