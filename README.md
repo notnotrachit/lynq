@@ -147,6 +147,47 @@ npm run hardhat:test
 npm run hardhat:deploy:sepolia
 ```
 
+## 🚀 Future Roadmap
+
+### Phase 1: API & Developer Platform
+- **Public API Exposure** - RESTful API for third-party integrations
+- **Developer Dashboard** - API keys, usage analytics, documentation
+- **Webhooks** - Real-time notifications for payment events
+- **SDKs** - JavaScript, Python, and Go client libraries
+
+### Phase 2: Protocol Integration
+- **X402 Protocol** - HTTP 402 payment required integration for paywalled content
+- **Micropayments** - Enable pay-per-use api lookup endpoint
+- **Payment Requests** - Invoice generation and payment tracking
+
+### Phase 3: Platform Expansion
+- **Instagram OAuth** - Verified Instagram account linking
+- **LinkedIn OAuth** - Professional network payment integration
+- **TikTok Integration** - Creator tipping on TikTok
+- **Multi-Platform Dashboard** - Unified view across all social accounts
+
+### Phase 4: Multi-Chain & L2
+- **Base & Optimism** - L2 deployment for lower gas fees
+- **Polygon** - Additional L2 support
+- **Cross-chain Bridging** - Seamless asset transfers
+- **Multi-token Support** - USDC, USDT, and other stablecoins
+
+### Phase 5: Advanced Features
+- **Recurring Payments** - Subscription-based payments via social handles
+- **Group Payments** - Split bills and shared expenses
+- **Payment Links** - Shareable payment request URLs
+- **QR Codes** - In-person payments via social identity
+- **Analytics Dashboard** - Payment insights and trends
+
+### Phase 6: Enterprise & B2B
+- **White-label Solution** - Customizable for platforms
+- **Enterprise API** - High-volume transaction support
+- **Compliance Tools** - KYC/AML integration options
+- **SLA Guarantees** - Uptime and performance commitments
+
+### Vision
+Transform LynQ into the **universal payment layer** for social platforms, enabling any application to accept crypto payments using human-readable social identities. Make Web3 payments as seamless as liking a post.
+
 ## License
 
 MIT
