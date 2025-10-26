@@ -1,6 +1,15 @@
-# LynQ - Social Crypto Payments
+<div align="center">
+  <img src="https://tv6akf8u5k.ufs.sh/f/9O0rMFCPJMcpILQsaqjwCFiUvu8kTx7cyoLt6dWe9sHXEhl4" alt="LynQ Logo" width="120" />
+  
+  # LynQ
+  
+  **Bringing Web3 Payments to Web2 Platforms**
+  
+  Send PYUSD to Twitter handles, not wallet addresses.
+  
+</div>
 
-Send PYUSD to social media handles instantly. Link your Ethereum wallet and pay anyone on Twitter, Instagram, or LinkedIn.
+---
 
 ## Features
 
